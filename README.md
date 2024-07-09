@@ -14,10 +14,19 @@
 
 #### 과제 : 6탄 까지 내용 도메인 공유
 ```
-const API_KEY = `7713*********************292`;
+const API_KEY = `7713fec*****************d292`;
+// url 주소 가져오기
+const currentUrl = window.location.href;
+let newsApiUrl = "";
+// 개발시 / 배포시 에 따라 api url 처리
+if (currentUrl === "https://cool-times.netlify.app/") {
+    newsApiUrl = `https://noona-times-v2.netlify.app/top-headlines`;
+} else {
+    newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`;
+}
 let news = [];
 const getLastNews = async () => {
-    const url = new URL(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+    const url = new URL(newsApiUrl);
     const response = await fetch(url);
     const data = await response.json();
     news = data.articles;
@@ -26,5 +35,22 @@ const getLastNews = async () => {
 
 getLastNews();
 
+/* 결과
+(20) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+그중 1개만
+{
+    "source": {
+        "id": null,
+        "name": "Kormedi.com"
+    },
+    "author": "권순일 기자",
+    "title": "“고기만 굽지 말고”...바비큐 건강하게 잘 먹는 법 3 - 코메디닷컴",
+    "description": "야외에서 바비큐를 즐기기에 좋은 시기다. 고기를 불에 직접 구워 먹으면 해롭다는 것은 상식. 먹는 즐거움의 하나인 바비큐를 포기하지 않으면서 잘 먹는 방법은 없는 걸까. 미국 시사 주간지 타임 등의 자료를 토대로 바비큐, 건강하게 먹는 방법을 알아봤다.“고기 외에 과일, 채소, 해산물도 구워라”=고기를 300도 이상 고온에서 조리하면 아미노산과 크레아틴이 반응하면서 헤테로사이클릭아민류(HCAs)라 불리는 발암 물질이 생성된다. 과일과 채소는 다",
+    "url": "https://kormedi.com/1703420/고기만-굽지-말고-바비큐-건강하게-잘-먹는-법-3/",
+    "urlToImage": "https://kormedi.com/wp-content/uploads/2024/07/gettyimages-a10737588-700x467.jpg",
+    "publishedAt": "2024-07-08T02:36:22Z",
+    "content": ", . [=]\r\n. . . , .\r\n , , = 300 (HCAs) . .\r\n, , , , , HCAs . , , , . .\r\n= 2 . , , B . .\r\n . . , .\r\n=, , , , . 30 HCAs .\r\n . 100g 1g HCAs . .\r\n. kormedi.com / -, AI"
+}
+*/
 
 ```
