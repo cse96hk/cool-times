@@ -1,0 +1,44 @@
+/* styles.css */
+
+/* Header */
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Navigation */
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+/* Main Content */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-link:hover {
+    color: #0056b3;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
