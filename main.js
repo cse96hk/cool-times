@@ -7,7 +7,7 @@ let newsApiUrl = "";
 if (arraySplit[2] === "127.0.0.1:5500") {
     newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`;
 } else {
-    newsApiUrl = `https://noona-times-v2.netlify.app/top-headlines`;
+    newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 }
 
 let newsList = [];
