@@ -30,6 +30,19 @@ const formatDateTime = (inputDateTime) => {
     return `${year}.${month}.${day} ${hours}:${minutes}`;
 };
 
+const descriptionDataCheck = (description) => {
+    if (description == null) {
+        return "기사없음";
+    } else {
+        if (description.length > 200) {
+            //200자를 초과 말줄임 처리
+            return (description = description.substr(0, 200) + "...");
+        } else {
+            return description;
+        }
+    }
+};
+
 const renderNews = () => {
     const newsHTML = newsList
         .map(
@@ -39,9 +52,12 @@ const renderNews = () => {
                 <img src="${news.urlToImage}" onerror="this.onerror=null; this.src='https://unsplash-assets.imgix.net/empty-states/photos.png?auto=format&fit=crop&q=100'" class="card-img-top"  >
                 <div class="card-body">
                     <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.description == null ? "기사없음" : news.description}</p>
-                    <p class="card-text">${news.source.name} * ${formatDateTime(news.publishedAt)}</p>
+                    <p class="card-text">${descriptionDataCheck(news.description)}</p>
                     <a href="${news.url}" class="btn btn-light" target="_blank">기사링크</a>
+                </div>
+                <div class="card-footer text-body-secondary d-flex justify-content-between">
+                ${news.source.name == null ? "no source" : news.source.name}
+                <div>${moment(news.publishedAt).startOf("day").fromNow()}</div>
                 </div>
             </div>
         </div>`
