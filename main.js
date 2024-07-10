@@ -1,7 +1,6 @@
 const API_KEY = `7713fec458914cb7b0bf43b12d8bd292`;
 const currentUrl = window.location.href; // 현 URL 정보가져오기
 let arraySplit = currentUrl.split("/"); // url 분리하기
-
 let newsApiUrl = "";
 // 개발시 / 배포시 에 따라 api url 처리
 if (arraySplit[2] === "127.0.0.1:5500") {
