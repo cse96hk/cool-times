@@ -31,7 +31,7 @@ const formatDateTime = (inputDateTime) => {
 };
 
 const descriptionDataCheck = (description) => {
-    if (description == null) {
+    if (description == null || description == "") {
         return "기사없음";
     } else {
         if (description.length > 200) {
