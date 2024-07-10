@@ -1,4 +1,4 @@
-# 뉴스 타임즈 만들기 (3주 1일 2일)
+# 뉴스 타임즈 만들기 (3주 1일 2일,3일, 4일, 5일, 6일, 7일)
 
 ## 배포 URL
 [뉴스타임즈만들기] : https://cool-times.netlify.app/
@@ -70,7 +70,7 @@ getLastNews();
 - 타임즈 뉴스 UI 구성
 - API 내용 그려주기
 ```
- const API_KEY = `7713fec458914cb7b0bf43b12d8bd292`;
+const API_KEY = `7713fec*****************d292`;
 const currentUrl = window.location.href; // 현 URL 정보가져오기
 let arraySplit = currentUrl.split("/"); // url 분리하기
 let newsApiUrl = "";
@@ -78,6 +78,7 @@ let newsApiUrl = "";
 if (arraySplit[2] === "127.0.0.1:5500") {
     newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`;
 } else {
+    // 배포 새로운주소로
     newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 }
 
