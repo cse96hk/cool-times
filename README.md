@@ -19,7 +19,6 @@ let newsApiUrl = "";
 if (arraySplit[2] === "127.0.0.1:5500") {
     newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`;
 } else {
-    // 배포 새로운주소로
     newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 }
 
@@ -32,6 +31,17 @@ const getLastNews = async () => {
     renderNews();
     console.log(newsList);
 };
+const formatDateTime = (inputDateTime) => {
+    const date = new Date(inputDateTime);
+    console.log(date);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${year}.${month}.${day} ${hours}:${minutes}`;
+};
 
 const renderNews = () => {
     const newsHTML = newsList
@@ -42,9 +52,9 @@ const renderNews = () => {
                 <img src="${news.urlToImage}" onerror="this.onerror=null; this.src='https://unsplash-assets.imgix.net/empty-states/photos.png?auto=format&fit=crop&q=100'" class="card-img-top"  >
                 <div class="card-body">
                     <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.description}</p>
-                    <p class="card-text">${news.source.name} * ${news.publishedAt}</p>
-                    <a href="${news.url}" class="btn btn-light" taget="_blank">기사링크</a>
+                    <p class="card-text">${news.description == null ? "기사없음" : news.description}</p>
+                    <p class="card-text">${news.source.name} * ${formatDateTime(news.publishedAt)}</p>
+                    <a href="${news.url}" class="btn btn-light" target="_blank">기사링크</a>
                 </div>
             </div>
         </div>`
