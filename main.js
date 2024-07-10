@@ -39,7 +39,7 @@ const renderNews = () => {
                 <img src="${news.urlToImage}" onerror="this.onerror=null; this.src='https://unsplash-assets.imgix.net/empty-states/photos.png?auto=format&fit=crop&q=100'" class="card-img-top"  >
                 <div class="card-body">
                     <h5 class="card-title">${news.title}</h5>
-                    <p class="card-text">${news.description == null ? " " : news.description}</p>
+                    <p class="card-text">${news.description == null ? "기사없음" : news.description}</p>
                     <p class="card-text">${news.source.name} * ${formatDateTime(news.publishedAt)}</p>
                     <a href="${news.url}" class="btn btn-light" target="_blank">기사링크</a>
                 </div>
