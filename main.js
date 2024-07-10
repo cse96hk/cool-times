@@ -30,7 +30,7 @@ const renderNews = () => {
                     <h5 class="card-title">${news.title}</h5>
                     <p class="card-text">${news.description}</p>
                     <p class="card-text">${news.source.name} * ${news.publishedAt}</p>
-                    <a href="${news.url}" class="btn btn-light" taget="_blank">기사링크</a>
+                    <a href="${news.url}" class="btn btn-light" target="_blank">기사링크</a>
                 </div>
             </div>
         </div>`
