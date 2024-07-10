@@ -1,8 +1,25 @@
 body {
+    padding-top: 150px; 
     min-width: 370px;
 }
 
+
 /* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+.navbar {
+    position: fixed;
+    top: 80px; 
+    left: 0;
+    width: 100%;
+    z-index: 999; 
+}
+
 header h1 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -30,6 +47,9 @@ header h1 {
 }
 
 /* Pagination */
+.pagination {
+    margin-bottom: 100px;
+}
 .pagination .page-link {
     color: #007bff;
 }
@@ -39,11 +59,11 @@ header h1 {
 }
 
 /* Footer */
-footer {
+/* footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
+} */
 
 @media (max-width: 370px) {
     header h1 {
@@ -72,6 +92,7 @@ footer {
     }
 
     footer {
+        
         font-size: 0.9rem; /* Smaller font size for footer */
     }
 }
