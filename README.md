@@ -1,5 +1,8 @@
 # 뉴스 타임즈 만들기 (3주 1일 2일,3일, 4일, 5일, 6일, 7일)
 
+## News API
+[뉴스 API] : https://newsapi.org/
+
 ## 배포 URL
 [뉴스타임즈만들기] : https://cool-times.netlify.app/
 
