@@ -10,7 +10,7 @@ let searchIcon = document.getElementById("search-icon");
 const menus = document.querySelectorAll(".menus button");
 const sideMenu = document.getElementById("side-menu");
 const sideMenus = document.querySelectorAll(".menu-content button");
-let category = "Home";
+let category = "";
 const closeMenu = document.getElementById("close-menu");
 
 // 검색 아이콘 토굴
@@ -50,8 +50,8 @@ sideMenus.forEach((menu) =>
 
 // 개발시 / 배포시 에 따라 api url 처리
 if (arraySplit[2] === "127.0.0.1:5500") {
-    //newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&pageSize=12&apiKey=${API_KEY}`;
-    newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
+    newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&pageSize=12&apiKey=${API_KEY}`;
+    //newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 } else {
     newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 }
@@ -102,7 +102,7 @@ const getLastNews = async (searchQuery) => {
 const getByMenu = async (event) => {
     category = event.target.textContent.toLowerCase();
     const url = new URL(newsApiUrl);
-    if (category !== "Home") {
+    if (category !== "home") {
         url.searchParams.set("category", category);
     } else {
         url.searchParams.delete("category");
