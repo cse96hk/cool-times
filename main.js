@@ -1,3 +1,4 @@
+// 변수
 const API_KEY = `7713fec458914cb7b0bf43b12d8bd292`;
 const currentUrl = window.location.href; // 현 URL 정보가져오기
 let arraySplit = currentUrl.split("/"); // url 분리하기
@@ -11,10 +12,14 @@ const sideMenu = document.getElementById("side-menu");
 const sideMenus = document.querySelectorAll(".menu-content button");
 let category = "Home";
 const closeMenu = document.getElementById("close-menu");
+
+// 검색 아이콘 토굴
 searchIcon.addEventListener("click", function () {
     searchInput.classList.toggle("d-none");
     searchBtn.classList.toggle("d-none");
 });
+
+// 피시용 메뉴 클릭시
 menus.forEach((menu) =>
     menu.addEventListener("click", (event) => {
         menus.forEach((menu) => menu.classList.remove("active"));
@@ -27,6 +32,8 @@ menus.forEach((menu) =>
         getByMenu(event);
     })
 );
+
+// 사이드바메뉴 클릭시
 sideMenus.forEach((menu) =>
     menu.addEventListener("click", (event) => {
         sideMenus.forEach((menu) => menu.classList.remove("active"));
@@ -48,11 +55,7 @@ if (arraySplit[2] === "127.0.0.1:5500") {
     newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 }
 
-//============================================
-//  검색창에서 엔터치면 searchPost()실행
-//============================================
-//searchBtn.addEventListener("click", searchPost);
-// 검색창에서 엔터치면 searchPost()실행
+// 입력상자에서 엔터입력 검색
 searchBtn.addEventListener("click", (event) => searchPost(event));
 searchInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.isComposing) {
@@ -84,8 +87,7 @@ const searchPost = async (event) => {
     }
 };
 
-//============================================
-
+// 기사가져오기
 const getLastNews = async (searchQuery) => {
     const url = new URL(newsApiUrl);
     const response = await fetch(url);
@@ -95,6 +97,7 @@ const getLastNews = async (searchQuery) => {
     console.log(newsList);
 };
 
+// 메뉴 클릭시 기사 가져오기
 const getByMenu = async (event) => {
     category = event.target.textContent;
     const url = new URL(newsApiUrl);
@@ -111,6 +114,7 @@ const getByMenu = async (event) => {
     renderNews();
 };
 
+// 기사 없을때 처리
 const descriptionDataCheck = (description) => {
     if (description == null || description == "") {
         return "기사없음";
@@ -124,6 +128,7 @@ const descriptionDataCheck = (description) => {
     }
 };
 
+// 가져오기 데이터 그려주기
 const renderNews = () => {
     const newsHTML = newsList
         .map(
@@ -147,6 +152,8 @@ const renderNews = () => {
     const newsContainer = document.getElementById("news-container");
     newsContainer.innerHTML = newsHTML;
 };
+
+// 데이터 없을때 그려주기
 const renderNoData = () => {
     const newsHTML = `<main class="px-3 text-center">
     <h1>요청한 데이터가 없습니다.</h1>
