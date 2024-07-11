@@ -50,7 +50,8 @@ sideMenus.forEach((menu) =>
 
 // 개발시 / 배포시 에 따라 api url 처리
 if (arraySplit[2] === "127.0.0.1:5500") {
-    newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&pageSize=12&apiKey=${API_KEY}`;
+    //newsApiUrl = `https://newsapi.org/v2/top-headlines?country=kr&pageSize=12&apiKey=${API_KEY}`;
+    newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 } else {
     newsApiUrl = ` https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`;
 }
@@ -99,7 +100,7 @@ const getLastNews = async (searchQuery) => {
 
 // 메뉴 클릭시 기사 가져오기
 const getByMenu = async (event) => {
-    category = event.target.textContent;
+    category = event.target.textContent.toLowerCase();
     const url = new URL(newsApiUrl);
     if (category !== "Home") {
         url.searchParams.set("category", category);
