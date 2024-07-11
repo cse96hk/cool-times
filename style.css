@@ -1,24 +1,47 @@
+/* styles.css */
 body {
-    padding-top: 150px; 
-    min-width: 370px;
-    
-}    
+    padding-top: 150px;
+    min-width: 450px;
+}
+
+button {
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+a:link {
+    text-decoration: none;
+}
+a:visited, a:active {
+    font-style: normal;
+}
 
 
-/* Header */
+/* Fixed Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; 
+    z-index: 1000;
+}
+.logo-text a {
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    color: #ffffff;
+    font-style: normal;
 }
 .navbar {
     position: fixed;
-    top: 80px; 
+    top: 80px;
     left: 0;
     width: 100%;
-    z-index: 999; 
+    z-index: 999;
 }
 
 header h1 {
@@ -26,15 +49,30 @@ header h1 {
     font-weight: bold;
 }
 
+
+
 /* Navigation */
 .navbar-nav .nav-link {
     font-size: 1.2rem;
     margin-right: 1rem;
 }
 
-.container{
+.menus {
+    font-size: 1.2rem;
+    padding: 10px 10px;
+}
+
+.menus button:hover {
+    color: #007bff;
+    
+
+}
+
+.container {
     min-height: 800px;
 }
+
+
 
 /* Main Content */
 .card-img-top {
@@ -52,7 +90,6 @@ header h1 {
 }
 
 /* Pagination */
-
 .pagination .page-link {
     color: #007bff;
 }
@@ -63,7 +100,6 @@ header h1 {
 
 /* Footer */
 footer {
-    
     bottom: 0;
     width: 100%;
 }
@@ -73,41 +109,110 @@ footer {
 }
 
 #infoModal .modal-body {
-
     max-height: 400px;
     overflow-y: scroll;
 }
+
 @media (max-width: 370px) {
     header h1 {
-        font-size: 1.8rem; /* Smaller font size for header */
+        font-size: 1.8rem;
     }
 
     .navbar-nav .nav-link {
-        font-size: 1rem; /* Smaller font size for nav links */
-        margin-right: 0.5rem; /* Less margin for nav links */
+        font-size: 1rem;
+        margin-right: 0.5rem;
     }
 
     .card-img-top {
-        height: 150px; /* Smaller image height for cards */
+        height: 150px;
     }
 
     .card-title {
-        font-size: 1rem; /* Smaller font size for card titles */
+        font-size: 1rem;
     }
 
     .card-text {
-        font-size: 0.9rem; /* Smaller font size for card text */
+        font-size: 0.9rem;
     }
 
     .pagination .page-link {
-        font-size: 0.9rem; /* Smaller font size for pagination links */
+        font-size: 0.9rem;
     }
 
     footer {
-        
-        font-size: 0.9rem; /* Smaller font size for footer */
+        font-size: 0.9rem;
+    }
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-toggler {
+        order: 1;
+    }
+    #searchForm {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #searchForm input {
+        width: calc(100% - 10px); /* Adjusting for padding/margin */
+        margin-bottom: 5px;
+    }
+
+    #searchForm button {
+        width: 100%;
     }
 }
 
+/* Side Menu */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
 
+.side-menu .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+    background: none;
+    border: none;
+}
 
+.side-menu .menu-content {
+    padding: 20px;
+    text-align: left;
+}
+
+.side-menu .menu-content button {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 25px;
+    transition: 0.3s;
+}
+
+.side-menu .menu-content button:hover {
+    background-color: #575757;
+}
+
+/* Side Menu Active */
+.side-menu.active {
+    width: 250px;
+}
