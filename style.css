@@ -42,6 +42,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 999;
+    border-bottom: 1px solid lightgrey;
 }
 
 header h1 {
@@ -90,12 +91,18 @@ header h1 {
 }
 
 /* Pagination */
+.pagination {
+    margin: 50px;
+}
 .pagination .page-link {
     color: #007bff;
 }
 
 .pagination .page-link:hover {
     color: #0056b3;
+}
+.pagination .active .page-link {
+    color: #ffffff;
 }
 
 /* Footer */
@@ -113,7 +120,7 @@ footer {
     overflow-y: scroll;
 }
 
-@media (max-width: 370px) {
+@media (max-width: 780px) and (max-width: 370px) {
     header h1 {
         font-size: 1.8rem;
     }
@@ -215,4 +222,7 @@ footer {
 /* Side Menu Active */
 .side-menu.active {
     width: 250px;
+}
+.error-page {
+    margin-top: 50px;
 }
