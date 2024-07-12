@@ -209,7 +209,7 @@ const renderNoData = (msg) => {
 const pagingRender = () => {
     //totalPage
     const totalPage = Math.ceil(_totalResults / _pageSize);
-    //현재페이지: pageGroup
+    //pageGroup
     const pageGroup = Math.ceil(_page / _groupSize);
     // lastPage
     let lastPage = pageGroup * _groupSize;
