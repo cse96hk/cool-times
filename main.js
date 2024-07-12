@@ -205,8 +205,6 @@ const renderNoData = (msg) => {
 };
 /**
  * page navigation
- * 1.페이지 사이지
- * 2.
  */
 const pagingRender = () => {
     //totalPage
