@@ -106,6 +106,8 @@ const getNews = async () => {
         const data = await response.json();
         if (response.status === 200) {
             if (data.articles.length === 0) {
+                _totalResults = 0; // 전체건수 초기화
+                pagingRender(); // 페이지 재 호출
                 throw new Error("요청하신 데이터가 없습니다. 다시 확인하세요.");
             }
             newsList = data.articles;
@@ -198,6 +200,8 @@ const renderNoData = (msg) => {
   </main>`;
     const newsContainer = document.getElementById("news-container");
     newsContainer.innerHTML = newsHTML;
+    const newsCount = document.getElementById("news-count");
+    newsCount.innerHTML = `Total Count : ${_totalResults}건`;
 };
 /**
  * page navigation
@@ -228,16 +232,6 @@ const pagingRender = () => {
     paginationHTML += `<li class="page-item ${totalPage < 5 || _page === totalPage ? "disN" : ""}" onclick="goPage(${totalPage})"><a class="page-link" href="#">>></a></li>`;
 
     document.querySelector(".pagination").innerHTML = paginationHTML;
-
-    // <li class="page-item disabled">
-    //     <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    // </li>
-    // <li class="page-item"><a class="page-link" href="#">1</a></li>
-    // <li class="page-item"><a class="page-link" href="#">2</a></li>
-    // <li class="page-item"><a class="page-link" href="#">3</a></li>
-    // <li class="page-item">
-    //     <a class="page-link" href="#">Next</a>
-    // </li>
 };
 
 const goPage = (pageNum) => {
