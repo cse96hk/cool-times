@@ -124,6 +124,7 @@ const getNews = async () => {
 
 // 검색
 const searchPost = async (event) => {
+    _page = 1;
     let searchQuery = searchInput.value;
     if (searchQuery == "") {
         alert("검색어를 입력해주세요!");
@@ -139,12 +140,14 @@ const searchPost = async (event) => {
 
 // 기사가져오기
 const getLastNews = async (searchQuery) => {
+    _page = 1;
     url = new URL(newsApiUrl);
     await getNews(); // 기사가져오기 리팩토링
 };
 
 // 메뉴 클릭시 기사 가져오기
 const getByMenu = async (event) => {
+    _page = 1;
     category = event.target.textContent.toLowerCase();
     url = new URL(newsApiUrl);
     if (category !== "home") {
@@ -232,7 +235,7 @@ const pagingRender = () => {
     document.querySelector(".pagination").innerHTML = paginationHTML;
 };
 
-const goPage = (pageNum) => {
+const goPage = async (pageNum) => {
     _page = pageNum;
-    getNews();
+    await getNews();
 };
